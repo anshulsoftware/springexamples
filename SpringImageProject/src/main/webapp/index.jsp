@@ -19,7 +19,7 @@
    
 </head>
 <body>
-<a href="send">Send next Page</a><br>
+<a href="send">Click for Next Page....</a><br>
 
 
 </body>
