@@ -1,0 +1,24 @@
+
+
+Http Code 
+200
+400
+500
+
+Request : 
+GET  - @Pathvariable, @RequestParam 
+POST - JSON - @RequestBody  - XML
+PUT - JSON - @RequestBody
+DELET - @Pathvariable, @RequestParam 
+
+
+
+Response : 
+
+@ResponseBody & ResponseEntity
+
+JSON 
+XML
+text
+
+Header - ContentType 
