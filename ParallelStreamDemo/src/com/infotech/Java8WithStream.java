@@ -1,8 +1,10 @@
 package com.infotech;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Java8WithStream {
 
@@ -11,14 +13,23 @@ public class Java8WithStream {
 		list.add(new Employee(1,"Aman",12000));
 		list.add(new Employee(2,"Vijay",13000));
 		list.add(new Employee(3,"Ramesh",14000));
-		List<String> li=list.stream().map(e->e.getName().toUpperCase()).collect(Collectors.toList());
-		li.forEach(System.out::println);
-		List<Employee> emp=list.stream().collect(Collectors.toList());
-		emp.forEach(a->System.out.println(a.getName()+" "+a.getSalary()));
+		//List<String> li=list.stream().map(e->e.getName().toUpperCase()).collect(Collectors.toList());
+		List<Employee> li=Stream.of(new Employee(2,"Vijay",13000),new Employee(1,"Aman",12000),new Employee(3,"Ramesh",14000)).sorted().collect(Collectors.toList());
+
+		/*li.sort(new Comparator<Employee>() {
+			public int compare(Employee o1, Employee o2) {
+				return o1.getName().compareTo(o2.getName());
+			};
+		});*/
+		//li.forEach(System.out::println);
+		//List<Employee> emp=list.stream().collect(Collectors.toList());
+		
+		li.forEach(a->System.out.println(a.getName().toUpperCase()+" "+a.getSalary()));
+		
 	}
 
 }
-class Employee
+class Employee implements Comparable<Employee>
 {
 	private int id;
 	private String name;
@@ -51,6 +62,10 @@ class Employee
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
 	}*/
+	@Override
+	public int compareTo(Employee e1) {
+		return this.getName().compareTo(e1.getName());
+	}
 	
 	
 }
